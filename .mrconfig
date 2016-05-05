@@ -1,0 +1,5 @@
+[.]
+checkout = git clone git@github.com:rocket-drone/flight-stack.git
+
+[firmware/px4]
+checkout = git clone 'git@github.com:rocket-drone/px4-firmware.git' 'px4'
