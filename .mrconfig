@@ -1,5 +1,21 @@
+[DEFAULT]
+include = cat $(dirname $MR_CONFIG)/tools/scripts/mrextras
+
 [.]
 checkout = git clone git@github.com:rocket-drone/flight-stack.git
 
 [firmware/px4]
 checkout = git clone 'git@github.com:rocket-drone/px4-firmware.git' 'px4'
+post_checkout = add_upstream_remote
+
+[firmware/ardupilot]
+checkout = git clone git@github.com:rocket-drone/ardupilot.git
+post_checkout = add_upstream_remote
+
+[ground/qgroundcontrol]
+checkout = git clone --recursive 'git@github.com:rocket-drone/qgroundcontrol.git' 'qgroundcontrol'
+post_checkout = add_upstream_remote
+
+[ground/apm_planner]
+checkout = git clone git@github.com:rocket-drone/apm_planner.git
+post_checkout = add_upstream_remote

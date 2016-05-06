@@ -1,1 +1,4 @@
 firmware/px4/
+firmware/ardupilot/
+ground/qgroundcontrol/
+ground/apm_planner/

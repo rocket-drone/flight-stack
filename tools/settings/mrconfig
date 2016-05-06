@@ -1,3 +1,3 @@
 [.]
-checkout = git clone git@github.com:rocket-drone/flight-stack.git && echo $MR_REPO/.mrconfig ~/.mrtrust
+checkout = git clone git@github.com:rocket-drone/flight-stack.git
 
