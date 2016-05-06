@@ -1,10 +1,4 @@
 lib = 
-	get_upstream_path()
-	{
-		local super_path=$(dirname $MR_CONFIG)
-		local relative_repo_path=${MR_REPO##$super_path/}
-		echo $super_path/.mrextras/$relative_repo_path/upstream
-	}
 	is_upstream_set()
 	{
 		git -C $MR_REPO remote | grep -q upstream
@@ -50,7 +44,17 @@ lib =
 			git stash pop
 		fi
 	}
+	mark_branch()
+	{
+		local branch=$(git rev-parse --abbrev-ref HEAD)
+		local super_path=$(dirname $MR_CONFIG)
+		local relative_repo_path=${MR_REPO##$super_path/}
+		local branch_path=$super_path/.mrextras/$relative_repo_path/branch
+		echo "marking $MR_REPO with branch $branch"
+		echo $branch > $branch_path
+	}
 
-git_sync = sync_fork
-
-
+git_sync = sync_fork "$@"
+git_branch = branch_repo "$@"
+git_tag = tag_repo "$@"
+git_mark = mark_branch "$@"
