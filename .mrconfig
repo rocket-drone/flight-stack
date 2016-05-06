@@ -19,3 +19,7 @@ post_checkout = add_upstream_remote
 [ground/apm_planner]
 checkout = git clone git@github.com:rocket-drone/apm_planner.git
 post_checkout = add_upstream_remote
+
+[ground/opentx]
+checkout = git clone 'git@github.com:rocket-drone/opentx.git' 'opentx'
+post_checkout = add_upstream_remote
