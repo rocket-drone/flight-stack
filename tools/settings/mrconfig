@@ -1,3 +1,12 @@
-[.]
-checkout = git clone git@github.com:rocket-drone/flight-stack.git
-
+[flight-stack]
+checkout = 
+	git clone git@github.com:rocket-drone/flight-stack.git
+	if [ -e ~/.mrtrust ]; then
+		if ! grep -q "$MR_REPO" ~/.mrtrust; then
+			echo $MR_REPO/.mrconfig >> ~/.mrtrust
+		fi
+	else
+		echo $MR_REPO/.mrconfig > ~/.mrtrust
+	fi
+	cd $MR_REPO && mr -t checkout
+	rm -rf $MR_CONFIG
