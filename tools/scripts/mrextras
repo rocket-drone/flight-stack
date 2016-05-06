@@ -52,9 +52,11 @@ lib =
 		local branch_path=$super_path/.mrextras/$relative_repo_path/branch
 		echo "marking $MR_REPO with branch $branch"
 		echo $branch > $branch_path
+		git -C $super_path add $branch_path
 	}
 
-git_sync = sync_fork "$@"
-git_branch = branch_repo "$@"
-git_tag = tag_repo "$@"
-git_mark = mark_branch "$@"
+git_sync = sync_fork
+git_mark = mark_branch
+git_branch = git branch "$@"
+git_tag = git tag "$@"
+git_remote = git remote "$@"
