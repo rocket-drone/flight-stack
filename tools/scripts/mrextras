@@ -60,3 +60,6 @@ git_mark = mark_branch
 git_branch = git branch "$@"
 git_tag = git tag "$@"
 git_remote = git remote "$@"
+git_switch = git checkout "$@"
+git_rebase = git rebase "$@"
+git_merge = git merge "$@"
