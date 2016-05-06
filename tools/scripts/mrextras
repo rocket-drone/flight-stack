@@ -1,4 +1,19 @@
 lib = 
+	get_upstream_path()
+	{
+		local super_path=$(dirname $MR_CONFIG)
+		local relative_repo_path=${MR_REPO##$super_path/}
+		echo $super_path/.mrextras/$relative_repo_path/upstream
+	}
+	is_upstream_set()
+	{
+		git -C $MR_REPO remote | grep -q upstream
+	}
+	is_repo_clean()
+	{
+		test -z "$(git status -s)"
+		return $?
+	}
 	add_upstream_remote()
 	{
 		local super_path=$(dirname $MR_CONFIG)
@@ -11,3 +26,31 @@ lib =
 			fi
 		fi		
 	}
+	sync_fork()	
+	{
+		local branch=$(git rev-parse --abbrev-ref HEAD)
+		local stashed_changes=0
+		if ! is_upstream_set; then
+			return
+		fi
+		if ! is_repo_clean; then
+			git stash --all "sync-fork"
+			stashed_changes=1
+		fi
+		if [ "$branch" != "master" ]; then
+			git checkout master
+		fi
+		git fetch upstream
+		git merge upstream/master
+		git push
+		if [ "$branch" != "master" ]; then
+			git checkout $branch
+		fi
+		if [ $stashed_changes -eq 1 ]; then
+			git stash pop
+		fi
+	}
+
+git_sync = sync_fork
+
+
