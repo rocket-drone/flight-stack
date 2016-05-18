@@ -6,7 +6,7 @@ checkout = git clone 'git@github.com:rocket-drone/px4-firmware.git' 'src'
 post_checkout = add_upstream_remote
 
 [firmware/ardupilot/src]
-checkout = git clone 'git@github.com:rocket-drone/ardupilot.git' 'src'
+checkout = git clone --recursive 'git@github.com:rocket-drone/ardupilot.git' 'src'
 post_checkout = add_upstream_remote
 
 [ground/qgroundcontrol/src]

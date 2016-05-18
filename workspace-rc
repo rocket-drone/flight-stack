@@ -1,0 +1,13 @@
+export PROJECT_ROOT=$PWD
+
+alias home='cd $PROJECT_ROOT'
+
+if [[ "$(which eclipse)"  != "" ]]; then
+	alias ide='eclipse $WORKSPACE/eclipse&'
+fi
+
+if [[ "$(which subl)" != "" ]]; then
+	alias edit='subl'
+else
+	alias edit='nano'
+fi

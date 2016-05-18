@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for extern_deps_file in $(find . -name "extern-deps"); do
+	echo "Processing $extern_deps_file"
+	extern_deps+=$(cat $extern_deps_file | grep -v '^[[:blank:]]*#')
+done
+
+apt-get install ${extern_deps}

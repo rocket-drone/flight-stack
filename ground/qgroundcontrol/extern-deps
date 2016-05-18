@@ -1,0 +1,4 @@
+espeak
+libespeak-dev
+libudev-dev 
+libsdl1.2-dev

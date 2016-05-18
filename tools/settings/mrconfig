@@ -9,4 +9,3 @@ checkout =
 		echo $MR_REPO/.mrconfig > ~/.mrtrust
 	fi
 	cd $MR_REPO && mr -t checkout
-	rm -rf $MR_CONFIG

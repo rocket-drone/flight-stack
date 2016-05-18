@@ -1,3 +1,4 @@
+local/
 firmware/px4/src/
 firmware/ardupilot/src
 ground/qgroundcontrol/src

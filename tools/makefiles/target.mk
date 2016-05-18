@@ -8,10 +8,10 @@
 
 .SUFFIXES:
 
-include ${PROJECT_ROOT}/Makefile.common
+include ${PROJECT_ROOT}/tools/makefiles/common.mk
 
 ifndef BUILD_PATH
-BUILD_PATH := $(subst ${PROJECT_ROOT},${BUILD_ROOT},${CURDIR})
+	BUILD_PATH := $(subst ${PROJECT_ROOT},${BUILD_ROOT},${CURDIR})
 endif
 
 ${BUILD_PATH}:

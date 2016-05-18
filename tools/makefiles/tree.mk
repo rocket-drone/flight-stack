@@ -8,7 +8,7 @@
 
 where-am-i := ${CURDIR}/$(lastword $(subst $(lastword ${MAKEFILE_LIST}),,${MAKEFILE_LIST}))
 
-include ${PROJECT_ROOT}/Makefile.common
+include ${PROJECT_ROOT}/tools/makefiles/common.mk
 
 BUILD_PATH := $(subst ${PROJECT_ROOT},${BUILD_ROOT},${CURDIR})
 SUBDIRS ?= $(subst ${CURDIR}/,,$(shell $(FIND) ${CURDIR} -mindepth 2 -maxdepth 2 -name "*.mk" -and -not -name "subdir.mk" -printf "%h "))
