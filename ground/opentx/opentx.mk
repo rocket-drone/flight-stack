@@ -5,15 +5,22 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/. 
 #
+ifeq ($(findstring ${BUILD_ROOT},${CURDIR}),)
+include ${PROJECT_ROOT}/tools/makefiles/target.mk
+else
 
-export PROJECT_ROOT ?= ${CURDIR}
+include ${PROJECT_ROOT}/tools/makefiles/common.mk
 
-targets: firmware ground
+all: radio companion
 
-include ${PROJECT_ROOT}/tools/makefiles/tree.mk 
+clean: 
+	@echo "CLEANING: "
 
-distclean:
-	@echo "DISTCLEAN: doing nothing"
+radio:
+	@echo "BUILDING: $@"
+	
+companion:
+	@echo "BUILDING: $@"
 
-realclean: distclean
-	@echo "REALCLEAN: doing nothing"
+
+endif

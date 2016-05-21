@@ -1,6 +1,10 @@
 local/
-firmware/px4/
-firmware/ardupilot/
-ground/qgroundcontrol/
-ground/apm_planner/
-ground/opentx/
+archives/
+tmp/
+build/
+root/
+src/firmware/px4/
+src/firmware/ardupilot/
+src/ground/qgroundcontrol/
+src/ground/apm_planner/
+src/ground/opentx/

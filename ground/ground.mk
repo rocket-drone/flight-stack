@@ -6,6 +6,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/. 
 #
 
-target: apm_planner
+target: opentx
 
 include ${PROJECT_ROOT}/tools/makefiles/tree.mk
