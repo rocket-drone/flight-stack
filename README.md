@@ -22,6 +22,18 @@ QGroundStation Dependencies
 	libespeak-dev
 	libudev-dev 
 	libsdl1.2-dev
+	ccache
+    doxygen
+    espeak
+    graphviz
+    libespeak-dev
+    libopenscenegraph-dev
+    libsdl1.2-dev
+    libudev-dev
+    texlive-font-utils
+    wget
+    libgbm-dev
+    freetds-dev
 
 PX4 Firmware Build Page
 	http://dev.px4.io/starting-installing-linux.html

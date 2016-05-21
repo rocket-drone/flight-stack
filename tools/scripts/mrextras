@@ -25,6 +25,7 @@ lib =
 		local branch=$(git rev-parse --abbrev-ref HEAD)
 		local stashed_changes=0
 		if ! is_upstream_set; then
+			echo "warn: upstream not set"
 			return
 		fi
 		if ! is_repo_clean; then

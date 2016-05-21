@@ -1,22 +1,22 @@
 [DEFAULT]
 include = cat $(dirname $MR_CONFIG)/tools/scripts/mrextras
 
-[firmware/px4/src]
-checkout = git clone 'git@github.com:rocket-drone/px4-firmware.git' 'src'
+[firmware/px4]
+checkout = git clone 'git@github.com:rocket-drone/px4-firmware.git' 'px4'
 post_checkout = add_upstream_remote
 
-[firmware/ardupilot/src]
-checkout = git clone --recursive 'git@github.com:rocket-drone/ardupilot.git' 'src'
+[firmware/ardupilot]
+checkout = git clone --recursive 'git@github.com:rocket-drone/ardupilot.git' 'ardupilot'
 post_checkout = add_upstream_remote
 
-[ground/qgroundcontrol/src]
-checkout = git clone --recursive 'git@github.com:rocket-drone/qgroundcontrol.git' 'src'
+[ground/qgroundcontrol]
+checkout = git clone --recursive 'git@github.com:rocket-drone/qgroundcontrol.git' 'qgroundcontrol'
 post_checkout = add_upstream_remote
 
-[ground/apm_planner/src]
-checkout = git clone 'git@github.com:rocket-drone/apm_planner.git' 'src'
+[ground/apm_planner]
+checkout = git clone 'git@github.com:rocket-drone/apm_planner.git' 'apm_planner'
 post_checkout = add_upstream_remote
 
-[ground/opentx/src]
-checkout = git clone 'git@github.com:rocket-drone/opentx.git' 'src'
+[ground/opentx]
+checkout = git clone 'git@github.com:rocket-drone/opentx.git' 'opentx'
 post_checkout = add_upstream_remote
