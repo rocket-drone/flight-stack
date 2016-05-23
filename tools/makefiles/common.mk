@@ -26,11 +26,16 @@ else
  	Q = @
 endif
 
+export QT_PATH ?= /opt/Qt/5.5/gcc_64/bin/
 export TOOLCHAIN_PATH ?=${PROJECT_ROOT}/local/bin/
 export BUILD_ROOT ?= ${PROJECT_ROOT}/build
+export IMAGE_ROOT ?= ${PROJECT_ROOT}/images
+export INSTALL_ROOT ?= ${PROJECT_ROOT}/root 
+
+export MAKE_JOBS ?= $(shell grep --count ^processor /proc/cpuinfo)
 
 ifeq ($(shell which arm-none-eabi-gcc),)
-	export PATH := ${TOOLCHAIN_PATH}:${PATH}
+	export PATH := ${TOOLCHAIN_PATH}:${QT_PATH}:${PATH}
 endif
 
 FIND ?= find

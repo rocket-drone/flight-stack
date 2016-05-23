@@ -3,6 +3,7 @@ archives/
 tmp/
 build/
 root/
+images/
 src/firmware/px4/
 src/firmware/ardupilot/
 src/ground/qgroundcontrol/
