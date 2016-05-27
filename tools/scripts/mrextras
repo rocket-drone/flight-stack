@@ -13,33 +13,60 @@ lib =
 		local super_path=$(dirname $MR_CONFIG)
 		local relative_repo_path=${MR_REPO##$super_path/src/}
 		local upstream_path=$super_path/$relative_repo_path/upstream
-		if [ -e $upstream_path ]; then
+		if [ -e "$upstream_path" ]; then
 			local upstream_url=$(cat $upstream_path)
-			if [ -n $upstream_url ]; then
+			if [ -n "$upstream_url" ]; then
 				git -C $MR_REPO remote add upstream $upstream_url
 			fi
 		fi		
 	}
+	checkout_branch()
+	{
+		local super_path=$(dirname $MR_CONFIG)
+		local relative_repo_path=${MR_REPO##$super_path/src/}
+		local branch_path=$super_path/$relative_repo_path/branch
+		if [ -e "$branch_path" ]; then
+			local branch=$(cat $branch_path)
+			git -C $MR_REPO checkout $branch
+			if [ -e "$MR_REPO/.gitmodules" ]; then
+				git -C $MR_REPO submodule update --init --recursive
+			fi
+		fi
+	}
 	sync_fork()	
 	{
+		local super_path=$(dirname $MR_CONFIG)
+		local relative_repo_path=${MR_REPO##$super_path/src/}
+		local track_upstream_path=$super_path/$relative_repo_path/track-upstream
 		local branch=$(git rev-parse --abbrev-ref HEAD)
 		local stashed_changes=0
 		if ! is_upstream_set; then
 			echo "warn: upstream not set"
 			return
 		fi
+		if [ ! -e "$track_upstream_path" ]; then
+			echo "warn: missig track-upstream, can not sync"
+			return
+		fi
 		if ! is_repo_clean; then
 			git stash --all "sync-fork"
 			stashed_changes=1
 		fi
-		if [ "$branch" != "master" ]; then
-			git checkout master
-		fi
-		git fetch upstream
-		git merge upstream/master
-		git push
-		if [ "$branch" != "master" ]; then
-			git checkout $branch
+		git fetch upstream --prune
+		for track_upstream_branch in $(cat $track_upstream_path); do
+			git checkout $track_upstream_branch
+			if [ -e ".gitmodules" ]; then
+				git submodule update --init --recursive
+			fi
+			git merge upstream/$track_upstream_branch
+			if [ -e ".gitmodules" ]; then
+				git submodule update --init --recursive
+			fi
+			git push
+		done
+		git checkout $branch
+		if [ -e ".gitmodules" ]; then
+			git submodule update --init --recursive
 		fi
 		if [ $stashed_changes -eq 1 ]; then
 			git stash pop

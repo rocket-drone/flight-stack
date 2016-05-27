@@ -13,7 +13,9 @@ targets: firmware ground
 include ${PROJECT_ROOT}/tools/makefiles/tree.mk 
 
 distclean:
-	@echo "DISTCLEAN: doing nothing"
+	@echo "DISTCLEAN: ${BUILD_ROOT} ${IMAGE_ROOT} ${INSTALL_ROOT}"
+	$(Q)rm -rf ${BUILD_ROOT} ${IMAGE_ROOT} ${INSTALL_ROOT}
 
 realclean: distclean
 	@echo "REALCLEAN: doing nothing"
+
