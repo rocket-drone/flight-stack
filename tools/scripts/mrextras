@@ -54,6 +54,12 @@ lib =
 		fi
 		git fetch upstream --prune
 		for track_upstream_branch in $(cat $track_upstream_path); do
+			if ! git config --get branch.$track_upstream_branch.remote; then
+				git branch $track_upstream_branch origin/$track_upstream_branch
+			fi
+			if [ -e ".gitmodules" ]; then
+				git submodule deinit .
+			fi
 			git checkout $track_upstream_branch
 			if [ -e ".gitmodules" ]; then
 				git submodule update --init --recursive
