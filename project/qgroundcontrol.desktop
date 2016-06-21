@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=QGroundControl 2.9.7b
+GenericName=Ground Control Station
+Comment=UAS ground control station
+Icon=qgroundcontrol
+Exec=qgroundcontrol
+Terminal=false
+Categories=Utility;
+Keywords=computer;
