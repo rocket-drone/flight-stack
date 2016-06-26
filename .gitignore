@@ -9,3 +9,4 @@ src/firmware/ardupilot/
 src/ground/qgroundcontrol/
 src/ground/apm_planner/
 src/ground/opentx/
+3dr-party/
